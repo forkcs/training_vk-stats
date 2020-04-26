@@ -3,6 +3,11 @@ from typing import List, Dict
 import config
 
 
+def get_messages_count(conn, user_id: int) -> int:
+    msg_count = conn.messages.getHistory(user_id=user_id, count=1, version=config.VK_API_VERSION)['count']
+    return msg_count
+
+
 def get_messages_from_user_id(conn, user_id: int, pbar=None) -> List[Dict]:
     """
 
@@ -13,7 +18,7 @@ def get_messages_from_user_id(conn, user_id: int, pbar=None) -> List[Dict]:
     """
 
     messages = []
-    msg_count = conn.messages.getHistory(user_id=user_id, count=1, version=config.VK_API_VERSION)['count']
+    msg_count = get_messages_count(conn, user_id)
     for i in range(0, msg_count + (msg_count % 200), 200):
         raw_data = conn.messages.getHistory(user_id=user_id, count=200, offset=i, version=config.VK_API_VERSION)
         messages_part = [{'date': m['date'], 'out': m['out'], 'text': m['text']} for m in raw_data['items']]
