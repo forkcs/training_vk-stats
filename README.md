@@ -31,6 +31,8 @@ optional arguments:
 
 ## Requirements
 ```
+Python 3.6+
+
 vk_api==11.8.0
 progressbar==2.5
 ```
