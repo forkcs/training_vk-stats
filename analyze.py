@@ -57,7 +57,7 @@ def generate_analyze_results(messages) -> Dict:
         'received_count': get_input_messages_count(messages),
         'first_message_date': str(get_first_message_date(messages)),
         'last_message_date': str(get_last_message_date(messages)),
-        'top_100_must_common_words': get_most_common_words(messages, 100)
+        'top_100_most_common_words': get_most_common_words(messages, 100)
     }
     return results
 
