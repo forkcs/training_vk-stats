@@ -17,6 +17,6 @@ def write_to_console(results: dict):
     print(results)
 
 
-def write_to_json_file(json_results: str, filename: str):
+def write_to_file(json_results: str, filename: str):
     with open(filename, 'w', encoding='utf-8') as f:
         f.write(json_results)

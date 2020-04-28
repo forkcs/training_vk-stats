@@ -1,7 +1,7 @@
 import sys
 
 from utils.console import parse_arguments, create_progressbar
-from utils.output import write_to_console, write_to_json_file, generate_json
+from utils.output import write_to_console, write_to_file, generate_json
 from utils.vkontakte import fetch_messages_by_user_id, get_messages_count, create_api_connection
 from analyze import generate_analyze_results
 
@@ -28,6 +28,6 @@ if __name__ == '__main__':
     # Get results according to given output options
     if args.json_filename is not None:
         json_results = generate_json(output_data)
-        write_to_json_file(json_results, args.json_filename)
+        write_to_file(json_results, args.json_filename)
     else:
         write_to_console(output_data)
